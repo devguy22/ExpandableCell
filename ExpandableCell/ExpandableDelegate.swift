@@ -57,6 +57,9 @@ public protocol ExpandableDelegate : UIScrollViewDelegate {
     func expandableTableView(_ expandableTableView: UITableView, didUnhighlightRowAt indexPath: IndexPath)
 
     func expandableTableView(_ expandableTableView: UITableView, didCloseRowAt indexPath: IndexPath)
+
+    func expandableTableView(_ expandableTableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    func expandableTableView(_ expandableTableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
 }
 
 public extension ExpandableDelegate {

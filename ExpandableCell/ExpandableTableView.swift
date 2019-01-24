@@ -173,6 +173,15 @@ extension ExpandableTableView: UITableViewDataSource, UITableViewDelegate {
             return height
         }
     }
+
+    public func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        guard let delegate = expandableDelegate else { return false }
+        return delegate.expandableTableView(self, canEditRowAt: indexPath)
+    }
+
+    public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        expandableDelegate?.expandableTableView(self, commit: editingStyle, forRowAt: indexPath)
+    }
     
 //Mark: Optional forward ScrollView methods
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
